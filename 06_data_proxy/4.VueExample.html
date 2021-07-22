@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Vue中的数据代理</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+        <a id='root'>
+
+        </a>
+	</body>
+
+	<script type="text/javascript">
+    	Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+        const vm = new Vue({
+        el:'#root',
+        data() {
+            return {
+            val1: 2,
+            val2: 3
+            }
+        },
+        computed: {
+            sum() {
+            return this.val1 + this.val2
+            }
+        }
+        })
+
+        console.log(vm.sum) // 5
+
+        vm.val1 = 3
+
+        console.log(vm.sum) // 6
+        
+	</script>
+</html>
