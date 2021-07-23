@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>引出生命周期</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<h2 v-if="a">Hello</h2>
+			<h2 :style="{opacity}">Welcome to Vue</h2>
+			{{change()}}
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false 
+		
+		 new Vue(
+			 {
+			el:'#root',
+			data:{
+				a:false,
+				opacity:1
+			},				
+			methods:{
+				change(){console.log('change data')
+				if (this.opacity > 0) this.opacity -=0.1
+			}
+			},
+			beforeMount(){
+				console.log("before mount")
+				//debugger
+
+			},
+			created(){
+				console.log("created")
+				//debugger
+
+			},
+
+			beforeCreate(){
+				console.log("before creat")
+				//debugger
+
+			},
+
+			beforeMount(){
+				console.log("before Mount")
+				//debugger
+
+			},
+			mounted(){
+				console.log(" Mounted")
+				//debugger
+
+			},
+			beforeUpdate(){
+				console.log("before UPdated", this.opacity)
+				//debugger
+
+			},
+
+			updated(){
+				console.log("updated")
+				//debugger
+
+			},
+
+		})
+
+	</script>
+</html>
