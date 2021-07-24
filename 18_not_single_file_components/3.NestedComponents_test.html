@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>组件的嵌套</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+
+	<body>
+		<a>
+			lalal
+		</a>
+		<a>
+			haha
+		</a>
+		<div id="root">
+		</div>
+	</body>
+
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+		const student = Vue.extend({
+			name: "student",
+			template: '<div>{{firstName}} {{lastName}} aka {{alias}}</div>',
+			data: function () {
+				return {
+				firstName: 'Walter',
+				lastName: 'White',
+				alias: 'Heisenberg'
+				}
+			}
+			})
+		
+		const app = Vue.extend(
+			{
+				name: "app",
+				template: `
+				<div>
+					<a>appName:{{name}} </a>
+					<h1></h1> 
+					<student></student> 
+				</div>
+					`,
+				data: function(){
+
+					return {name: "app"}
+
+				},
+				components: {student}
+			}
+		)
+
+		vm = new Vue(
+			{ 
+				template: "<app></app>",
+				el: '#root' ,
+				components: {app}
+		}
+		)
+
+		
+
+	</script>
+</html>
